@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace ToDoList
 {
@@ -19,16 +20,23 @@ namespace ToDoList
             InitializeComponent();
             CheckFile();
 
+            TaskTime_DateTimePicker.Format = DateTimePickerFormat.Custom;
+            TaskTime_DateTimePicker.CustomFormat = "dd.MM.yyyy HH:mm";
+
             WhiteTheme_btn.Visible = false;
         }
 
         private void AddTask_btn_Click(object sender, EventArgs e)
         {
-            if (TaskTime_DateTimePicker.Value >= DateTime.Now)
+            if (string.IsNullOrEmpty(TaskName_TextBox.Text) || string.IsNullOrEmpty(TaskDescription_TextBox.Text))
             {
-                Tasks_DataGridView.Rows.Add(TaskName_TextBox.Text, TaskDescription_TextBox.Text, TaskTime_DateTimePicker.Value.ToString("dd/MM/yy HH:mm"));
+                MessageBox.Show("Вы не указали данные о задаче!");
             }
-            else MessageBox.Show("Выберите актуальное время");
+            else if (TaskTime_DateTimePicker.Value <= DateTime.Now)
+            {
+                MessageBox.Show("Укажите актуальное время!");
+            }
+            else Tasks_DataGridView.Rows.Add(TaskName_TextBox.Text, TaskDescription_TextBox.Text, TaskTime_DateTimePicker.Value.ToString("dd.MM.yyyy HH:mm"));
         }
 
         private void Clear_btn_Click(object sender, EventArgs e)
@@ -95,7 +103,7 @@ namespace ToDoList
             {
                 foreach (DataGridViewRow row in Tasks_DataGridView.SelectedRows)
                 {
-                    Tasks_DataGridView.Rows.Clear();
+                    Tasks_DataGridView.Rows.RemoveAt(row.Index);
                 }
             }
             else MessageBox.Show("Вы не выбрали задачи!");
