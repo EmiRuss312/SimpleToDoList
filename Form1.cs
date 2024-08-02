@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -15,6 +10,7 @@ namespace ToDoList
     public partial class ToDoList : Form
     {
         public string path = @"Task.txt";
+        public List<TaskData> tasks = new List<TaskData>();
         public ToDoList()
         {
             InitializeComponent();
@@ -24,6 +20,8 @@ namespace ToDoList
             TaskTime_DateTimePicker.CustomFormat = "dd.MM.yyyy HH:mm";
 
             WhiteTheme_btn.Visible = false;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
         }
 
         private void AddTask_btn_Click(object sender, EventArgs e)
@@ -36,12 +34,25 @@ namespace ToDoList
             {
                 MessageBox.Show("Укажите актуальное время!");
             }
-            else Tasks_DataGridView.Rows.Add(TaskName_TextBox.Text, TaskDescription_TextBox.Text, TaskTime_DateTimePicker.Value.ToString("dd.MM.yyyy HH:mm"));
+            else
+            {
+                tasks.Add(new TaskData
+                {
+                    Name = TaskName_TextBox.Text,
+                    Description = TaskDescription_TextBox.Text,
+                    Time = TaskTime_DateTimePicker.Value
+                });
+
+                UpdateDataGridView();
+                SaveTasks();
+            }
         }
 
         private void Clear_btn_Click(object sender, EventArgs e)
         {
-            Tasks_DataGridView.Rows.Clear();
+            tasks.Clear();
+            UpdateDataGridView();
+            SaveTasks();
         }
 
         private void ClearSelected_Click(object sender, EventArgs e)
@@ -94,7 +105,36 @@ namespace ToDoList
 
         private void LoadTasks()
         {
-            int a = 0;
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<TaskData>));
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    tasks = (List<TaskData>)serializer.Deserialize(reader);
+                }
+
+                UpdateDataGridView();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка загрузки задач: " + ex.Message);
+            }
+        }
+
+        private void SaveTasks()
+        {
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<TaskData>));
+                using (StreamWriter writer = new StreamWriter(path))
+                {
+                    serializer.Serialize(writer, tasks);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка сохранения задач: " + ex.Message);
+            }
         }
 
         private void DeleteTasks()
@@ -103,10 +143,24 @@ namespace ToDoList
             {
                 foreach (DataGridViewRow row in Tasks_DataGridView.SelectedRows)
                 {
-                    Tasks_DataGridView.Rows.RemoveAt(row.Index);
+                    tasks.RemoveAt(row.Index);
                 }
+                UpdateDataGridView();
+                SaveTasks();
             }
-            else MessageBox.Show("Вы не выбрали задачи!");
+            else
+            {
+                MessageBox.Show("Вы не выбрали задачи!");
+            }
+        }
+
+        private void UpdateDataGridView()
+        {
+            Tasks_DataGridView.Rows.Clear();
+            foreach (var task in tasks)
+            {
+                Tasks_DataGridView.Rows.Add(task.Name, task.Description, task.Time.ToString("dd.MM.yyyy HH:mm"));
+            }
         }
     }
 }
