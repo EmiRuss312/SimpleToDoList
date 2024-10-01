@@ -38,12 +38,12 @@
             this.TaskDescription_TextBox = new System.Windows.Forms.TextBox();
             this.TaskTime_DateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.Tasks_DataGridView = new System.Windows.Forms.DataGridView();
-            this.AddTask_btn = new System.Windows.Forms.Button();
-            this.Clear_btn = new System.Windows.Forms.Button();
-            this.ClearSelected = new System.Windows.Forms.Button();
             this.TaskName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaskTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddTask_btn = new System.Windows.Forms.Button();
+            this.Clear_btn = new System.Windows.Forms.Button();
+            this.ClearSelected = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Tasks_DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,48 +129,17 @@
             // 
             this.Tasks_DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Tasks_DataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.Tasks_DataGridView.ColumnHeadersVisible = false;
             this.Tasks_DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TaskName,
             this.Description,
             this.TaskTime});
             this.Tasks_DataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Tasks_DataGridView.Location = new System.Drawing.Point(0, 232);
+            this.Tasks_DataGridView.Location = new System.Drawing.Point(0, 192);
             this.Tasks_DataGridView.Name = "Tasks_DataGridView";
-            this.Tasks_DataGridView.Size = new System.Drawing.Size(405, 231);
+            this.Tasks_DataGridView.ReadOnly = true;
+            this.Tasks_DataGridView.Size = new System.Drawing.Size(405, 271);
             this.Tasks_DataGridView.TabIndex = 8;
-            // 
-            // AddTask_btn
-            // 
-            this.AddTask_btn.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.AddTask_btn.Image = ((System.Drawing.Image)(resources.GetObject("AddTask_btn.Image")));
-            this.AddTask_btn.Location = new System.Drawing.Point(12, 146);
-            this.AddTask_btn.Name = "AddTask_btn";
-            this.AddTask_btn.Size = new System.Drawing.Size(80, 80);
-            this.AddTask_btn.TabIndex = 9;
-            this.AddTask_btn.UseVisualStyleBackColor = false;
-            this.AddTask_btn.Click += new System.EventHandler(this.AddTask_btn_Click);
-            // 
-            // Clear_btn
-            // 
-            this.Clear_btn.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.Clear_btn.Image = ((System.Drawing.Image)(resources.GetObject("Clear_btn.Image")));
-            this.Clear_btn.Location = new System.Drawing.Point(184, 146);
-            this.Clear_btn.Name = "Clear_btn";
-            this.Clear_btn.Size = new System.Drawing.Size(80, 80);
-            this.Clear_btn.TabIndex = 10;
-            this.Clear_btn.UseVisualStyleBackColor = false;
-            this.Clear_btn.Click += new System.EventHandler(this.Clear_btn_Click);
-            // 
-            // ClearSelected
-            // 
-            this.ClearSelected.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClearSelected.Image = ((System.Drawing.Image)(resources.GetObject("ClearSelected.Image")));
-            this.ClearSelected.Location = new System.Drawing.Point(98, 146);
-            this.ClearSelected.Name = "ClearSelected";
-            this.ClearSelected.Size = new System.Drawing.Size(80, 80);
-            this.ClearSelected.TabIndex = 11;
-            this.ClearSelected.UseVisualStyleBackColor = false;
-            this.ClearSelected.Click += new System.EventHandler(this.ClearSelected_Click);
             // 
             // TaskName
             // 
@@ -189,6 +158,39 @@
             this.TaskTime.FillWeight = 76.14212F;
             this.TaskTime.HeaderText = "Время";
             this.TaskTime.Name = "TaskTime";
+            // 
+            // AddTask_btn
+            // 
+            this.AddTask_btn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.AddTask_btn.Image = ((System.Drawing.Image)(resources.GetObject("AddTask_btn.Image")));
+            this.AddTask_btn.Location = new System.Drawing.Point(38, 106);
+            this.AddTask_btn.Name = "AddTask_btn";
+            this.AddTask_btn.Size = new System.Drawing.Size(80, 80);
+            this.AddTask_btn.TabIndex = 9;
+            this.AddTask_btn.UseVisualStyleBackColor = false;
+            this.AddTask_btn.Click += new System.EventHandler(this.AddTask_btn_Click);
+            // 
+            // Clear_btn
+            // 
+            this.Clear_btn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.Clear_btn.Image = ((System.Drawing.Image)(resources.GetObject("Clear_btn.Image")));
+            this.Clear_btn.Location = new System.Drawing.Point(210, 106);
+            this.Clear_btn.Name = "Clear_btn";
+            this.Clear_btn.Size = new System.Drawing.Size(80, 80);
+            this.Clear_btn.TabIndex = 10;
+            this.Clear_btn.UseVisualStyleBackColor = false;
+            this.Clear_btn.Click += new System.EventHandler(this.Clear_btn_Click);
+            // 
+            // ClearSelected
+            // 
+            this.ClearSelected.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ClearSelected.Image = ((System.Drawing.Image)(resources.GetObject("ClearSelected.Image")));
+            this.ClearSelected.Location = new System.Drawing.Point(124, 106);
+            this.ClearSelected.Name = "ClearSelected";
+            this.ClearSelected.Size = new System.Drawing.Size(80, 80);
+            this.ClearSelected.TabIndex = 11;
+            this.ClearSelected.UseVisualStyleBackColor = false;
+            this.ClearSelected.Click += new System.EventHandler(this.ClearSelected_Click);
             // 
             // ToDoList
             // 

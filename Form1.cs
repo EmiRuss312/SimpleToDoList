@@ -11,6 +11,7 @@ namespace ToDoList
     {
         public string path = @"Task.txt";
         public List<TaskData> tasks = new List<TaskData>();
+        private System.Timers.Timer taskTimer;
         public ToDoList()
         {
             InitializeComponent();
@@ -22,30 +23,16 @@ namespace ToDoList
             WhiteTheme_btn.Visible = false;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+
+            taskTimer = new System.Timers.Timer();
+            taskTimer.Interval = 60000;
+            taskTimer.Elapsed += TaskTimer_Tik;
+            taskTimer.Start();
         }
 
         private void AddTask_btn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(TaskName_TextBox.Text) || string.IsNullOrEmpty(TaskDescription_TextBox.Text))
-            {
-                MessageBox.Show("Вы не указали данные о задаче!");
-            }
-            else if (TaskTime_DateTimePicker.Value <= DateTime.Now)
-            {
-                MessageBox.Show("Укажите актуальное время!");
-            }
-            else
-            {
-                tasks.Add(new TaskData
-                {
-                    Name = TaskName_TextBox.Text,
-                    Description = TaskDescription_TextBox.Text,
-                    Time = TaskTime_DateTimePicker.Value
-                });
-
-                UpdateDataGridView();
-                SaveTasks();
-            }
+            addTask();
         }
 
         private void Clear_btn_Click(object sender, EventArgs e)
@@ -103,6 +90,30 @@ namespace ToDoList
             else LoadTasks();
         }
 
+        private void addTask()
+        {
+            if (string.IsNullOrEmpty(TaskName_TextBox.Text) || string.IsNullOrEmpty(TaskDescription_TextBox.Text))
+            {
+                MessageBox.Show("Вы не указали данные о задаче!");
+            }
+            else if (TaskTime_DateTimePicker.Value <= DateTime.Now)
+            {
+                MessageBox.Show("Укажите актуальное время!");
+            }
+            else
+            {
+                tasks.Add(new TaskData
+                {
+                    Name = TaskName_TextBox.Text,
+                    Description = TaskDescription_TextBox.Text,
+                    Time = TaskTime_DateTimePicker.Value,
+                    isNotifed = false
+                });
+
+                UpdateDataGridView();
+                SaveTasks();
+            }
+        }
         private void LoadTasks()
         {
             try
@@ -160,6 +171,18 @@ namespace ToDoList
             foreach (var task in tasks)
             {
                 Tasks_DataGridView.Rows.Add(task.Name, task.Description, task.Time.ToString("dd.MM.yyyy HH:mm"));
+            }
+        }
+
+        private void TaskTimer_Tik(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            foreach (var task in tasks)
+            {
+                if (task.Time <= DateTime.Now && task.isNotifed == false)
+                {
+                    MessageBox.Show($"Задача '{task.Name}' просрочена!", "Задача просрочена");
+                    task.isNotifed = true;
+                }
             }
         }
     }
