@@ -119,7 +119,10 @@ namespace ToDoList
             {
                 foreach (DataGridViewRow row in Tasks_DataGridView.SelectedRows)
                 {
-                    tasks.RemoveAt(row.Index);
+                    if (row.Index > 0)
+                    {
+                        tasks.RemoveAt(row.Index);
+                    }
                 }
                 UpdateDataGridView();
                 SaveTasks();
