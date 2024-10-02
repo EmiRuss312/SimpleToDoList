@@ -42,7 +42,10 @@
             this.AddTask_btn = new System.Windows.Forms.Button();
             this.Clear_btn = new System.Windows.Forms.Button();
             this.ClearSelected = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Tasks_DataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // TaskName_label
@@ -140,7 +143,7 @@
             // 
             this.AddTask_btn.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.AddTask_btn.Image = ((System.Drawing.Image)(resources.GetObject("AddTask_btn.Image")));
-            this.AddTask_btn.Location = new System.Drawing.Point(12, 106);
+            this.AddTask_btn.Location = new System.Drawing.Point(141, 106);
             this.AddTask_btn.Name = "AddTask_btn";
             this.AddTask_btn.Size = new System.Drawing.Size(80, 80);
             this.AddTask_btn.TabIndex = 9;
@@ -169,12 +172,33 @@
             this.ClearSelected.UseVisualStyleBackColor = false;
             this.ClearSelected.Click += new System.EventHandler(this.ClearSelected_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(18, 103);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 44);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Reem Kufi", 14.25F);
+            this.label1.Location = new System.Drawing.Point(12, 150);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 36);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "ToDoList";
+            // 
             // ToDoList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(405, 463);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ClearSelected);
             this.Controls.Add(this.Clear_btn);
             this.Controls.Add(this.AddTask_btn);
@@ -189,6 +213,7 @@
             this.Name = "ToDoList";
             this.Text = "ToDoList";
             ((System.ComponentModel.ISupportInitialize)(this.Tasks_DataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,6 +233,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskTime;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
