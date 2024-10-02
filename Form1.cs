@@ -148,7 +148,7 @@ namespace ToDoList
             {
                 if (task.Time <= DateTime.Now && task.isNotifed == false)
                 {
-                    MessageBox.Show($"Задача '{task.Name}' просрочена!", "Задача просрочена");
+                    MessageBox.Show($"Время задачи '{task.Name}' пришло! ", "За работу!");
                     task.isNotifed = true;
                 }
             }
