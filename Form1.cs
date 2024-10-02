@@ -20,7 +20,6 @@ namespace ToDoList
             TaskTime_DateTimePicker.Format = DateTimePickerFormat.Custom;
             TaskTime_DateTimePicker.CustomFormat = "dd.MM.yyyy HH:mm";
 
-            WhiteTheme_btn.Visible = false;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
@@ -45,40 +44,6 @@ namespace ToDoList
         private void ClearSelected_Click(object sender, EventArgs e)
         {
             DeleteTasks();
-        }
-
-        private void DarkTheme_btn_Click(object sender, EventArgs e)
-        {
-            SetDarkTheme();
-        }
-
-        private void WhiteTheme_btn_Click(object sender, EventArgs e)
-        {
-            SetWhiteTheme();
-        }
-
-        private void SetDarkTheme()
-        {
-            this.BackColor = Color.Black;
-            Tasks_DataGridView.BackgroundColor = Color.Gray;
-            TaskName_label.ForeColor = Color.Gray;
-            TaskDescription_label.ForeColor = Color.Gray;
-            TaskTime_label.ForeColor = Color.Gray;
-
-            DarkTheme_btn.Visible = false;
-            WhiteTheme_btn.Visible = true;
-        }
-
-        private void SetWhiteTheme()
-        {
-            this.BackColor = Color.White;
-            Tasks_DataGridView.BackgroundColor = Color.White;
-            TaskName_label.ForeColor = Color.Black;
-            TaskDescription_label.ForeColor = Color.Black;
-            TaskTime_label.ForeColor = Color.Black;
-
-            WhiteTheme_btn.Visible = false;
-            DarkTheme_btn.Visible = true;
         }
 
         private void CheckFile()

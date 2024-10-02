@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToDoList));
-            this.DarkTheme_btn = new System.Windows.Forms.Button();
-            this.WhiteTheme_btn = new System.Windows.Forms.Button();
             this.TaskName_label = new System.Windows.Forms.Label();
             this.TaskDescription_label = new System.Windows.Forms.Label();
             this.TaskTime_label = new System.Windows.Forms.Label();
@@ -46,31 +44,6 @@
             this.ClearSelected = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Tasks_DataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // DarkTheme_btn
-            // 
-            this.DarkTheme_btn.AccessibleDescription = "";
-            this.DarkTheme_btn.BackColor = System.Drawing.Color.White;
-            this.DarkTheme_btn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.DarkTheme_btn.Image = ((System.Drawing.Image)(resources.GetObject("DarkTheme_btn.Image")));
-            this.DarkTheme_btn.Location = new System.Drawing.Point(0, 106);
-            this.DarkTheme_btn.Name = "DarkTheme_btn";
-            this.DarkTheme_btn.Size = new System.Drawing.Size(32, 32);
-            this.DarkTheme_btn.TabIndex = 0;
-            this.DarkTheme_btn.UseVisualStyleBackColor = false;
-            this.DarkTheme_btn.Click += new System.EventHandler(this.DarkTheme_btn_Click);
-            // 
-            // WhiteTheme_btn
-            // 
-            this.WhiteTheme_btn.AccessibleDescription = "";
-            this.WhiteTheme_btn.BackColor = System.Drawing.Color.White;
-            this.WhiteTheme_btn.Image = ((System.Drawing.Image)(resources.GetObject("WhiteTheme_btn.Image")));
-            this.WhiteTheme_btn.Location = new System.Drawing.Point(0, 106);
-            this.WhiteTheme_btn.Name = "WhiteTheme_btn";
-            this.WhiteTheme_btn.Size = new System.Drawing.Size(32, 32);
-            this.WhiteTheme_btn.TabIndex = 1;
-            this.WhiteTheme_btn.UseVisualStyleBackColor = false;
-            this.WhiteTheme_btn.Click += new System.EventHandler(this.WhiteTheme_btn_Click);
             // 
             // TaskName_label
             // 
@@ -128,13 +101,14 @@
             // Tasks_DataGridView
             // 
             this.Tasks_DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Tasks_DataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.Tasks_DataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.Tasks_DataGridView.ColumnHeadersVisible = false;
             this.Tasks_DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TaskName,
             this.Description,
             this.TaskTime});
             this.Tasks_DataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Tasks_DataGridView.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.Tasks_DataGridView.Location = new System.Drawing.Point(0, 192);
             this.Tasks_DataGridView.Name = "Tasks_DataGridView";
             this.Tasks_DataGridView.ReadOnly = true;
@@ -146,24 +120,27 @@
             this.TaskName.FillWeight = 58.66167F;
             this.TaskName.HeaderText = "Задача";
             this.TaskName.Name = "TaskName";
+            this.TaskName.ReadOnly = true;
             // 
             // Description
             // 
             this.Description.FillWeight = 165.1962F;
             this.Description.HeaderText = "Описание";
             this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
             // 
             // TaskTime
             // 
             this.TaskTime.FillWeight = 76.14212F;
             this.TaskTime.HeaderText = "Время";
             this.TaskTime.Name = "TaskTime";
+            this.TaskTime.ReadOnly = true;
             // 
             // AddTask_btn
             // 
             this.AddTask_btn.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.AddTask_btn.Image = ((System.Drawing.Image)(resources.GetObject("AddTask_btn.Image")));
-            this.AddTask_btn.Location = new System.Drawing.Point(38, 106);
+            this.AddTask_btn.Location = new System.Drawing.Point(12, 106);
             this.AddTask_btn.Name = "AddTask_btn";
             this.AddTask_btn.Size = new System.Drawing.Size(80, 80);
             this.AddTask_btn.TabIndex = 9;
@@ -174,7 +151,7 @@
             // 
             this.Clear_btn.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Clear_btn.Image = ((System.Drawing.Image)(resources.GetObject("Clear_btn.Image")));
-            this.Clear_btn.Location = new System.Drawing.Point(210, 106);
+            this.Clear_btn.Location = new System.Drawing.Point(313, 106);
             this.Clear_btn.Name = "Clear_btn";
             this.Clear_btn.Size = new System.Drawing.Size(80, 80);
             this.Clear_btn.TabIndex = 10;
@@ -185,7 +162,7 @@
             // 
             this.ClearSelected.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClearSelected.Image = ((System.Drawing.Image)(resources.GetObject("ClearSelected.Image")));
-            this.ClearSelected.Location = new System.Drawing.Point(124, 106);
+            this.ClearSelected.Location = new System.Drawing.Point(227, 106);
             this.ClearSelected.Name = "ClearSelected";
             this.ClearSelected.Size = new System.Drawing.Size(80, 80);
             this.ClearSelected.TabIndex = 11;
@@ -208,8 +185,6 @@
             this.Controls.Add(this.TaskTime_label);
             this.Controls.Add(this.TaskDescription_label);
             this.Controls.Add(this.TaskName_label);
-            this.Controls.Add(this.WhiteTheme_btn);
-            this.Controls.Add(this.DarkTheme_btn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ToDoList";
             this.Text = "ToDoList";
@@ -220,9 +195,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button DarkTheme_btn;
-        private System.Windows.Forms.Button WhiteTheme_btn;
         private System.Windows.Forms.Label TaskName_label;
         private System.Windows.Forms.Label TaskDescription_label;
         private System.Windows.Forms.Label TaskTime_label;
